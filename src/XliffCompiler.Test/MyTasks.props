@@ -1,0 +1,5 @@
+﻿<Project>
+  <UsingTask
+    TaskName="XliffCompilerTask"
+    AssemblyFile="bin\Debug\netstandard2.0\XliffCompiler.dll"/>
+</Project>

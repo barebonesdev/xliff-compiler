@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>XliffCompiler</id>
+    <version>1.0.11</version>
+    <title>XliffCompiler</title>
+    <authors>Andrew Leader</authors>
+    <owners>BareBones Dev</owners>
+    <projectUrl>https://github.com/barebonesdev/xliff-compiler</projectUrl>
+    <license type="expression">MIT</license>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Supports pre-compiling XLIFF translation files into RESX files automatically before main build step, serving as a replacement for broken Multilingual App Toolkit for my app.</description>
+    <tags>xliff</tags>
+    <developmentDependency>true</developmentDependency>
+    <dependencies>
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="Microsoft.Build.Utilities.Core" version="16.6.0" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="XliffCompiler.props" target="build\netstandard2.0" />
+    <file src="bin\Release\netstandard2.0\XliffCompiler.dll" target="build\netstandard2.0" />
+  </files>
+</package>

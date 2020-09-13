@@ -1,0 +1,8 @@
+﻿<Project>
+  <UsingTask
+    TaskName="XliffCompilerTask"
+    AssemblyFile="XliffCompiler.dll"/>
+  <Target Name="XliffCompilerTasks" BeforeTargets="CoreCompile">
+    <XliffCompilerTask/>
+  </Target>
+</Project>

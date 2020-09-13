@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <Import Project="MyTasks.props" />
+
+  <Target Name="MyTasks" AfterTargets="AfterBuild">
+    <XliffCompilerTask />
+  </Target>
+
+  <ItemGroup>
+    <PackageReference Include="ResXResourceReader.NetStandard" Version="1.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\XliffCompiler\XliffCompiler.csproj" />
+  </ItemGroup>
+
+</Project>

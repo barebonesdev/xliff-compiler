@@ -1,0 +1,5 @@
+C:\Users\andre\Documents\GitHub\xliff-compiler\src\XliffCompiler.NuGetTest\Strings\Resources.ar.resx
+C:\Users\andre\Documents\GitHub\xliff-compiler\src\XliffCompiler.NuGetTest\Strings\Resources.de.resx
+C:\Users\andre\Documents\GitHub\xliff-compiler\src\XliffCompiler.NuGetTest\Strings\Resources.es.resx
+C:\Users\andre\Documents\GitHub\xliff-compiler\src\XliffCompiler.NuGetTest\Strings\Resources.fr.resx
+C:\Users\andre\Documents\GitHub\xliff-compiler\src\XliffCompiler.NuGetTest\Strings\Resources.pt.resx
