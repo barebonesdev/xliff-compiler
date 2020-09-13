@@ -11,6 +11,7 @@
         private const string AttributeId = "id";
         private const string ElementSource = "source";
         private const string ElementTarget = "target";
+        public const string TargetState_New = "new";
         private XElement node;
         private XNamespace ns;
 
@@ -48,22 +49,20 @@
             set { this.node.SetElementValue(this.ns + ElementSource, value); }
         }
 
+        public void Remove()
+        {
+            this.node.Remove();
+        }
+
+        private XElement TargetElement => this.node.Elements(this.ns + ElementTarget).FirstOrDefault();
+
         /// <summary>
         /// Gets or sets the value of the <target> element. May be null if the element does not exist.
         /// Allowed are zero or one target elements.
         /// </summary>
         public string Target
         {
-            get
-            {
-                var targets = this.node.Elements(this.ns + ElementTarget);
-                if (!targets.Any())
-                {
-                    return null;
-                }
-
-                return targets.First().Value;
-            }
+            get => TargetElement?.Value;
 
             set
             {
@@ -75,6 +74,19 @@
                 else
                 {
                     this.node.SetElementValue(this.ns + ElementTarget, value);
+                }
+            }
+        }
+
+        public string TargetState
+        {
+            get => TargetElement?.Attribute("state")?.Value;
+            set
+            {
+                var el = TargetElement;
+                if (el != null)
+                {
+                    el.SetAttributeValue("state", value);
                 }
             }
         }

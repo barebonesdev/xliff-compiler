@@ -42,7 +42,8 @@
         {
             SkipExisting = 0,
             UpdateExisting = 1,
-            FailIfExists = 2
+            FailIfExists = 2,
+            DontCheckExisting = 3
         }
 
         // xml, html etc.
@@ -84,7 +85,7 @@
 
         public XlfTransUnit AddTransUnit(string id, string source, string target, AddMode addMode, XlfDialect dialect)
         {
-            if (TryGetTransUnit(id, dialect, out XlfTransUnit resultUnit))
+            if (addMode != AddMode.DontCheckExisting && TryGetTransUnit(id, dialect, out XlfTransUnit resultUnit))
             {
                 switch (addMode)
                 {
@@ -109,6 +110,9 @@
             }
 
             var n = new XElement(this.ns + ElementTransUnit);
+            n.SetAttributeValue("id", id);
+            n.SetAttributeValue("translate", "yes");
+            n.SetAttributeValue(XNamespace.Xml + "space", "preserve");
             var transUnits = this.node.Descendants(this.ns + ElementTransUnit).ToList();
 
             if (transUnits.Any())
@@ -136,19 +140,20 @@
 
             if (dialect == XlfDialect.RCWinTrans11)
             {
-                var unit = new XlfTransUnit(n, this.ns, IdNone, source, target);
+                var unit = new XlfTransUnit(n, this.ns, IdNone, source, target)
+                {
+                    TargetState = "new"
+                };
                 unit.Optional.Resname = id;
                 return unit;
             }
-            else if (dialect == XlfDialect.MultilingualAppToolkit)
+            else
             {
-                if (!id.StartsWith(XlfTransUnit.ResxPrefix, StringComparison.InvariantCultureIgnoreCase))
+                return new XlfTransUnit(n, this.ns, id, source, target)
                 {
-                    return new XlfTransUnit(n, this.ns, XlfTransUnit.ResxPrefix + id, source, target);
-                }
+                    TargetState = "new"
+                };
             }
-
-            return new XlfTransUnit(n, this.ns, id, source, target);
         }
 
         public XlfTransUnit GetTransUnit(string id, XlfDialect dialect)

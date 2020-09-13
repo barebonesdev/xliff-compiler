@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XliffCompiler", "XliffCompi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XliffCompiler.Test", "XliffCompiler.Test\XliffCompiler.Test.csproj", "{83E701FD-79F3-4795-8D5E-4B15C3A08A2A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XliffCompiler.NuGetTest", "XliffCompiler.NuGetTest\XliffCompiler.NuGetTest.csproj", "{C96F68A2-D2A6-419C-8D41-3F4506C41A20}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XliffCompiler.NuGetTest", "XliffCompiler.NuGetTest\XliffCompiler.NuGetTest.csproj", "{C96F68A2-D2A6-419C-8D41-3F4506C41A20}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

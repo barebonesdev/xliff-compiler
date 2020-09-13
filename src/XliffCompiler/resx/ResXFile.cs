@@ -8,8 +8,11 @@ namespace fmdev.ResX
     using System;
     using System.Collections.Generic;
     using System.IO;
+    using System.Linq;
     using System.Text;
     using System.Xml;
+    using System.Xml.Linq;
+    using System.Xml.XPath;
 
     public static class ResXFile
     {
@@ -96,6 +99,33 @@ namespace fmdev.ResX
             {
                 File.WriteAllText(filename, str);
             }
+        }
+
+        public static List<ResXEntry> Read(string filename)
+        {
+            // XmlDocument fails to load the doc, so have to use XDocument
+            List<ResXEntry> answer = new List<ResXEntry>();
+
+            XDocument doc = XDocument.Load(filename);
+
+            foreach (var dataNode in doc.XPathSelectElements("/root/data").OfType<XElement>())
+            {
+                try
+                {
+                    answer.Add(new ResXEntry()
+                    {
+                        Id = dataNode.Attribute("name").Value,
+                        Value = dataNode.XPathSelectElement("./value").Value,
+                        Comment = dataNode.XPathSelectElement("./comment")?.Value
+                    });
+                }
+                catch
+                {
+                    throw new Exception("Invalid resx node: " + dataNode.ToString());
+                }
+            }
+
+            return answer;
         }
 
         /// <summary>
