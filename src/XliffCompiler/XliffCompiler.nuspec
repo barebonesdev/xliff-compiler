@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>XliffCompiler</id>
-    <version>1.0.12</version>
+    <version>1.2.0</version>
     <title>XliffCompiler</title>
     <authors>Andrew Leader</authors>
     <owners>BareBones Dev</owners>
@@ -14,7 +14,7 @@
     <developmentDependency>true</developmentDependency>
     <dependencies>
       <group targetFramework=".NETStandard2.0">
-        <dependency id="Microsoft.Build.Utilities.Core" version="16.6.0" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Build.Utilities.Core" version="18.7.1" exclude="Build,Analyzers" />
       </group>
     </dependencies>
   </metadata>
